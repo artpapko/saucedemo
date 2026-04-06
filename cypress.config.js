@@ -5,6 +5,7 @@ module.exports = defineConfig({
 
   e2e: {
     baseUrl: 'https://www.saucedemo.com/',
+    specPattern: 'cypress/integration/**/*.{js,jsx,ts,tsx}',
     setupNodeEvents(on, config) {
     },
   },
