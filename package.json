@@ -1,0 +1,23 @@
+{
+  "name": "saucedemo",
+  "version": "1.0.0",
+  "description": "cypress demo",
+  "homepage": "https://github.com/artpapko/saucedemo#readme",
+  "bugs": {
+    "url": "https://github.com/artpapko/saucedemo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artpapko/saucedemo.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "cypress": "^15.13.0"
+  }
+}
