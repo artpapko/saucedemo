@@ -6,8 +6,7 @@ import MainPage from '../pom/main_page'
 describe('Login', () => {
     beforeEach(() => {
         cy.log('hi')
-    }
-    )
+    })
     Object.values(User).forEach(user => {
         it(`Login ${user.path}`, () => {
             cy.log('WHEN User goes to the Login Page')
