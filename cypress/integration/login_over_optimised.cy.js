@@ -2,12 +2,10 @@ import User from '../fixtures/users.json'
 import LoginPage from '../pom/login_page'
 import MainPage from '../pom/main_page'
 
-const ERR_MSG = 'Epic sadface: Sorry, this user has been locked out.'
 
 describe('Login', () => {
     Object.values(User).forEach(user => {
         it(`Login ${user.path}`, () => {
-            cy.log(user)
             cy.log('WHEN User goes to the Login Page')
             LoginPage.open()
             cy.log('And input username')
@@ -21,7 +19,7 @@ describe('Login', () => {
                 MainPage.isMainPage()
             } else {
                 cy.log('Then the error msg is shown')
-                MainPage.errorMsg.should('contain.text', ERR_MSG)
+                MainPage.errorMsg.should('contain.text', user.sad_msg)
             }
         })
     })
