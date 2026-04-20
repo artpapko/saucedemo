@@ -1,9 +1,11 @@
 {
   "standard_user": {
+    "path": "HP",
     "username": "standard_user",
     "password": "secret_sauce"
   },
   "locked_out_user": {
+    "path": "SP",
     "username": "locked_out_user",
     "password": "secret_sauce"
   }
