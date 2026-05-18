@@ -17,7 +17,7 @@ Cypress.Commands.add('login', (user) => {
     cy.get('#login-button').click()
 })
 
-Cypress.Commands.add('addProductsToCart', (products) => {
+Cypress.Commands.add('addProductsToCartFlaky', (products) => {
     products.forEach(product => {
         cy.log(product)
         cy.get('[data-test="inventory-list"]')
@@ -27,6 +27,15 @@ Cypress.Commands.add('addProductsToCart', (products) => {
             .siblings('[class="pricebar"]')
             .find('button[name*="add-to-cart"]')
             .click()
+    })
+})
+
+Cypress.Commands.add('addProductsToCartStable', (products) => {
+    products.forEach((product) => {
+        cy.contains('[data-test="inventory-item"]', product)
+            .within(() => {
+                cy.get('button[name*="add-to-cart"]').click()
+            })
     })
 })
 //
