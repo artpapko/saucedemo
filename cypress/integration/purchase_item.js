@@ -12,7 +12,9 @@ describe('Buy Products', () => {
 
     it('Login HP', () => {
         cy.log('WHEN the User adds products in the cart')
-        cy.addProductsToCartStable(Products)
+        cy.addProductsToCartFlaky(Products)
+        // cy.addProductsToCartStable(Products)
+        // cy.addMultipleProductsToCart(Products.length)
         cy.log('AND the products are added')
         MainPage.cartIcon.should('have.text', Products.length)
         // ... finish the happy path scenario using the same logic

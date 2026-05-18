@@ -38,6 +38,17 @@ Cypress.Commands.add('addProductsToCartStable', (products) => {
             })
     })
 })
+
+Cypress.Commands.add('addMultipleProductsToCart', (count = 3) => {
+    cy.get('[data-test="inventory-item"]')
+        .each(($product, index) => {
+            if (index < count) {
+                cy.wrap($product)
+                    .find('button[name*="add-to-cart"]')
+                    .click()
+            }
+        })
+})
 //
 //
 // -- This is a child command --
