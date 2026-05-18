@@ -4,6 +4,10 @@ class MainPage {
         return cy.get('[data-test="error"]')
     }
 
+    get cartIcon() {
+        return cy.get('[data-test="shopping-cart-link"]')
+    }
+
     isMainPage() {
         cy.url().should('include', 'inventory')
     }

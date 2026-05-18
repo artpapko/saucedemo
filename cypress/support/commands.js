@@ -10,7 +10,25 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('login', (user) => {
+    cy.visit('/')
+    cy.get('#user-name').clear().type(user.username)
+    cy.get('#password').clear().type(user.password)
+    cy.get('#login-button').click()
+})
+
+Cypress.Commands.add('addProductsToCart', (products) => {
+    products.forEach(product => {
+        cy.log(product)
+        cy.get('[data-test="inventory-list"]')
+            .find('[data-test="inventory-item"]')
+            .contains(product)
+            .parent()
+            .siblings('[class="pricebar"]')
+            .find('button[name*="add-to-cart"]')
+            .click()
+    })
+})
 //
 //
 // -- This is a child command --
