@@ -6,15 +6,17 @@ const USER = User.standard_user
 
 describe('Buy Products', () => {
     beforeEach(() => {
+        cy.log('GIVEN a User is signed in')
         cy.login(USER)
     })
 
     it('Login HP', () => {
-        cy.log('WHEN User adds products in the cart')
+        cy.log('WHEN the User adds products in the cart')
         cy.addProductsToCart(Products)
         cy.log('AND the products are added')
         MainPage.cartIcon.should('have.text', Products.length)
-        
+        // ... finish the happy path scenario using the same logic
+
 
     })
 
