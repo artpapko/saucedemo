@@ -1,6 +1,6 @@
 import User from '../fixtures/users.json'
 import LoginPage from '../pom/login_page'
-import MainPage from '../pom/main_page'
+import InventoryPage from '../pom/inventory_page'
 
 
 describe('Login', () => {
@@ -19,7 +19,7 @@ describe('Login', () => {
             LoginPage.loginButton.click()
             if (user.path == 'HP') {
                 cy.log('Then the Main Page is opened')
-                MainPage.isMainPage()
+                InventoryPage.isMainPage()
             } else {
                 cy.log('Then the error msg is shown')
                 MainPage.errorMsg.should('contain.text', user.sad_msg)

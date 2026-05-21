@@ -2,12 +2,35 @@
   "standard_user": {
     "path": "HP",
     "username": "standard_user",
-    "password": "secret_sauce"
+    "password": "secret_sauce",
+    "first_name": "John",
+    "last_name": "Doe",
+    "postal_code": "12345"
   },
   "locked_out_user": {
     "path": "SP",
     "username": "locked_out_user",
     "password": "secret_sauce",
     "sad_msg": "Epic sadface: Sorry, this user has been locked out."
+  },
+  "problem_user": {
+    "path": "HP",
+    "username": "problem_user",
+    "password": "secret_sauce"
+  },
+  "performance_glitch_user": {
+    "path": "HP",
+    "username": "performance_glitch_user",
+    "password": "secret_sauce"
+  }, 
+  "error_user": {
+    "path": "HP",
+    "username": "error_user",
+    "password": "secret_sauce"
+  },
+  "visual_user": {
+    "path": "HP",
+    "username": "visual_user",
+    "password": "secret_sauce"
   }
 }
