@@ -19,7 +19,7 @@ Cypress.Commands.add('login', (user) => {
 
 Cypress.Commands.add('addProductsToCartFlaky', (products) => {
     products.forEach(product => {
-        cy.log(product)
+        // cy.log(product)
         cy.get('[data-test="inventory-list"]')
             .find('[data-test="inventory-item"]')
             .contains(product)
@@ -39,16 +39,23 @@ Cypress.Commands.add('addProductsToCartStable', (products) => {
     })
 })
 
-Cypress.Commands.add('addMultipleProductsToCart', (count = 3) => {
+Cypress.Commands.add('addMultipleProductsToCart', count => {
     cy.get('[data-test="inventory-item"]')
-        .each(($product, index) => {
-            cy.log($product)
+        .each(($element, index) => {
+            cy.wait(5000)
+            // cy.log($element)
+            // cy.log(index)
             if (index < count) {
-                cy.wrap($product)
+                cy.wrap($element)
                     .find('button[name*="add-to-cart"]')
                     .click()
             }
         })
+})
+
+Cypress.Commands.add('checkNumberOfProducts', count => {
+    cy.wait(5000)
+    cy.get('[data-test="inventory-item"]').should('have.length', count)
 })
 //
 //

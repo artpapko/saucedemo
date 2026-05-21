@@ -10,15 +10,16 @@ describe('Buy Products', () => {
         cy.login(USER)
     })
 
-    it('Login HP', () => {
+    it('Buy Products HP', () => {
         cy.log('WHEN the User adds products in the cart')
         // cy.addProductsToCartFlaky(Products)
         // cy.addProductsToCartStable(Products)
         cy.addMultipleProductsToCart(Products.length)
         cy.log('AND the products are added')
-        MainPage.cartIcon.scrollIntoView().should('have.text', Products.length)
-        // ... finish the happy path scenario using the same logic
+        MainPage.cartIcon.scrollIntoView().should('have.text', Products.length).click()
 
+        // ... finish the happy path scenario using the same logic
+        cy.checkNumberOfProducts(Products.length)
 
     })
 
