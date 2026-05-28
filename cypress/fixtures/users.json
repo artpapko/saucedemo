@@ -3,7 +3,8 @@
     "username": "standard_user",
     "first_name": "standart",
     "last_name": "user",
-    "postal_code":"1234",
+    "postal_code": "1234",
+    "tax": 1.08,
     "password": "secret_sauce"
   },
   "locked_out_user": {

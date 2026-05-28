@@ -4,8 +4,7 @@ import InventoryPage from '../pom/main_page'
 import CartPage from '../pom/cart_page'
 import { calculateTotalPrice } from '../support/utils'
 
-const USER = User.standard_user,
-    HP_MSG = 'Thank you for your order!'
+const USER = User.standard_user
 
 describe('Buy Products', () => {
     beforeEach(() => {
@@ -19,7 +18,7 @@ describe('Buy Products', () => {
         // cy.addMultipleProductsToCart(Products.length)
         cy.addProductsToCartStable(Products)
         cy.getProductPrices(Products).then((prices) => {
-            const TOTAL_PRICE = calculateTotalPrice(prices)
+            const TOTAL_PRICE = calculateTotalPrice(prices, USER.tax)
 
             cy.log('THEN the products are added')
             InventoryPage.cartIcon.scrollIntoView().should('have.text', Products.length).click()

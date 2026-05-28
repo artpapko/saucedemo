@@ -1,6 +1,5 @@
-export const calculateTotalPrice = (prices) => {
-    const TAX = 1.08
+export const calculateTotalPrice = (prices, tax) => {
     const subtotal = prices.reduce((sum, price) => sum + price, 0)
 
-    return Number((subtotal * TAX).toFixed(2))
+    return Number((subtotal * tax).toFixed(2))
 }
