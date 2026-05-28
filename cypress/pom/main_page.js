@@ -1,4 +1,4 @@
-class MainPage {
+class InventoryPage {
 
     get errorMsg() {
         return cy.get('[data-test="error"]')
@@ -14,4 +14,4 @@ class MainPage {
 
 }
 
-export default new MainPage()
+export default new InventoryPage()

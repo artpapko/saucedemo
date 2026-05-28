@@ -1,6 +1,9 @@
 {
   "standard_user": {
     "username": "standard_user",
+    "first_name": "standart",
+    "last_name": "user",
+    "postal_code":"1234",
     "password": "secret_sauce"
   },
   "locked_out_user": {

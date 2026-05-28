@@ -39,10 +39,31 @@ Cypress.Commands.add('addProductsToCartStable', (products) => {
     })
 })
 
+Cypress.Commands.add('getProductPrices', (products) => {
+    const prices = []
+
+    return cy.wrap(products).each((product) => {
+        cy.contains('[data-test="inventory-item"]', product)
+            .within(() => {
+                cy.get('[data-test="inventory-item-price"]')
+                    .invoke('text')
+                    .then((text) => {
+                        const price = Number(
+                            text.replace('$', '').trim()
+                        )
+
+                        prices.push(price)
+                    })
+            })
+    }).then(() => {
+        return prices
+    })
+})
+
 Cypress.Commands.add('addMultipleProductsToCart', count => {
     cy.get('[data-test="inventory-item"]')
         .each(($element, index) => {
-            cy.wait(5000)
+            // cy.wait(5000)
             // cy.log($element)
             // cy.log(index)
             if (index < count) {
@@ -54,9 +75,17 @@ Cypress.Commands.add('addMultipleProductsToCart', count => {
 })
 
 Cypress.Commands.add('checkNumberOfProducts', count => {
-    cy.wait(5000)
+    // cy.wait(5000)
     cy.get('[data-test="inventory-item"]').should('have.length', count)
 })
+
+Cypress.Commands.add('fillInCheckoutForm', user => {
+    // cy.wait(5000)
+    cy.get('[data-test="firstName"]').clear().type(user.first_name)
+    cy.get('[data-test="lastName"]').clear().type(user.last_name)
+    cy.get('[data-test="postalCode"]').clear().type(user.postal_code)
+})
+
 //
 //
 // -- This is a child command --
