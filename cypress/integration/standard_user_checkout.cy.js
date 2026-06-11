@@ -31,7 +31,7 @@ describe('standardusercheckout', () => {
     CartPage.checkoutButton.click()
     cy.log('THEN the Checkout: Your Information page is opened')
     CheckoutStepOnePage.fillInCheckoutForm(USER)
-    cy.log('THEN the Checkout is displayed with the correct product')
+    cy.log('THEN the Checkout is displayed with the correct information')
     CheckoutStepTwoPage.inventoryItemName.should('contain.text', PRODUCT_NAME)
     cy.log('AND User clicks the [Finish] button')
     CheckoutStepTwoPage.finishButton.click()

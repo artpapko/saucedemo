@@ -1,7 +1,21 @@
+import User from '../fixtures/users.json'
+import LoginPage from '../pom/login_page'
+import InventoryPage from '../pom/inventory_page'
+import CartPage from '../pom/cart_page'
+import CheckoutStepOnePage from '../pom/checkout_step_one_page'
+import CheckoutStepTwoPage from '../pom/checkout_step_two_page'
+import CheckoutCompletePage from '../pom/checkout_complete_page'
+
+
 describe('problemusercheckout', () => {
 
 const USER = User.problem_user
+      PRODUCT_NAME = 'Sauce Labs Backpack',
 
+beforeEach(() => {
+    cy.log('WHEN Problem User tries to login')
+    LoginPage.login(USER)
+  })
 
   it('problemusercheckout', () => {
     cy.log('WHEN Problem User tries to login')
@@ -26,7 +40,7 @@ const USER = User.problem_user
     cy.get('[id="first-name"]').type("Veronica")
     cy.log('AND User types the Last Name')
     cy.get('[id="last-name"]').type("Smith")
-    cy.log('AND First Name is Overwritten with Last Name')
-    cy.get('[id="first-name"]').clear().type("Smith")
+    cy.log('AND First Name is overwritten with letter "e"')
+    cy.get('[id="first-name"]').should('have.value', 'e')
     })
 })
