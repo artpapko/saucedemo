@@ -7,6 +7,14 @@
     "tax": 1.08,
     "password": "secret_sauce"
   },
+  "standard_user_2": {
+    "username": "standard_user",
+    "first_name": "standart",
+    "last_name": "user_2",
+    "postal_code": "1234",
+    "tax": 1.09,
+    "password": "secret_sauce"
+  },
   "locked_out_user": {
     "username": "locked_out_user",
     "password": "secret_sauce"
