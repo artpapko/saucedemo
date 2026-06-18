@@ -14,12 +14,9 @@ describe('Buy Products', () => {
 
     it('Buy Products HP', () => {
         cy.log('WHEN the User adds products in the cart')
-        // cy.addProductsToCartFlaky(Products)
-        // cy.addMultipleProductsToCart(Products.length)
         cy.addProductsToCartStable(Products)
         cy.getProductPrices(Products).then((prices) => {
             const TOTAL_PRICE = calculateTotalPrice(prices, USER.tax)
-
             cy.log('THEN the products are added')
             InventoryPage.cartIcon.scrollIntoView().should('have.text', Products.length).click()
             cy.checkNumberOfProducts(Products.length)
