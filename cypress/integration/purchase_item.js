@@ -32,11 +32,10 @@ describe('Buy Products', () => {
         })
         cy.log('AND WHEN the User click [Finish]')
         CheckoutPage.finishButton.click()
+
         cy.log('THEN the HP MSG is displayed')
         CheckoutPage.checkoutText.should('contain.text', HP_MSG)
-
         CheckoutPage.checkoutText.shouldHaveNormalizedText(HP_MSG)
-
         cy.log('AND the User can return to the Main Page')
         CheckoutPage.backHomeButton.click()
         InventoryPage.isMainPage()
