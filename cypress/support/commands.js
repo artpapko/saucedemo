@@ -59,8 +59,7 @@ Cypress.Commands.add('fillInCheckoutForm', user => {
     cy.get('[data-test="postalCode"]').clear().type(user.postal_code)
 })
 
-Cypress.Commands.add(
-    'shouldHaveNormalizedText',
+Cypress.Commands.add('shouldHaveNormalizedText',
     { prevSubject: true },
     (subject, expectedText) => {
         const normalize = (value) =>
