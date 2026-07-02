@@ -17,7 +17,7 @@ describe('Login', () => {
         cy.log('And hit [Login]')
         LoginPage.loginButton.click()
         cy.log('Then the Main Page is opened')
-        MainPage.isMainPage
+        MainPage.isMainPage()
     })
 
     it('Login SD', () => {

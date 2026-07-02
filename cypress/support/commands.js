@@ -17,20 +17,7 @@ Cypress.Commands.add('login', (user) => {
     cy.get('#login-button').click()
 })
 
-Cypress.Commands.add('addProductsToCartFlaky', (products) => {
-    products.forEach(product => {
-        // cy.log(product)
-        cy.get('[data-test="inventory-list"]')
-            .find('[data-test="inventory-item"]')
-            .contains(product)
-            .parent()
-            .siblings('[class="pricebar"]')
-            .find('button[name*="add-to-cart"]')
-            .click()
-    })
-})
-
-Cypress.Commands.add('addProductsToCartStable', (products) => {
+Cypress.Commands.add('addProductsToCart', (products) => {
     products.forEach((product) => {
         cy.contains('[data-test="inventory-item"]', product)
             .within(() => {
@@ -60,20 +47,6 @@ Cypress.Commands.add('getProductPrices', (products) => {
     })
 })
 
-Cypress.Commands.add('addMultipleProductsToCart', count => {
-    cy.get('[data-test="inventory-item"]')
-        .each(($element, index) => {
-            // cy.wait(5000)
-            // cy.log($element)
-            // cy.log(index)
-            if (index < count) {
-                cy.wrap($element)
-                    .find('button[name*="add-to-cart"]')
-                    .click()
-            }
-        })
-})
-
 Cypress.Commands.add('checkNumberOfProducts', count => {
     // cy.wait(5000)
     cy.get('[data-test="inventory-item"]').should('have.length', count)
@@ -85,6 +58,25 @@ Cypress.Commands.add('fillInCheckoutForm', user => {
     cy.get('[data-test="lastName"]').clear().type(user.last_name)
     cy.get('[data-test="postalCode"]').clear().type(user.postal_code)
 })
+
+Cypress.Commands.add(
+    'shouldHaveNormalizedText',
+    { prevSubject: true },
+    (subject, expectedText) => {
+        const normalize = (value) =>
+            value
+                .trim()
+                .replace(/\s+/g, ' ')
+                .replace(/[.,]/g, '')
+                .toLowerCase()
+
+        cy.wrap(subject)
+            .invoke('text')
+            .then((text) => {
+                expect(normalize(text)).to.include(normalize(expectedText))
+            })
+    }
+)
 
 //
 //
